@@ -3,6 +3,6 @@
 How to generate bundle.zip used on AWS Elastic Beanstalk:
 
 ```
-jar cMf bundle.zip src conf Procfile Buildfile
+jar cMf bundle.zip src conf Procfile Buildfile pom.xml
 
 ```
