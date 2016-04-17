@@ -70,6 +70,10 @@
       <scope>test</scope>
     </dependency>
 
+<dependency>
+  <groupId>org.jooby</groupId>
+  <artifactId>jooby-jackson</artifactId>
+</dependency>
   </dependencies>
 
   <build>
