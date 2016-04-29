@@ -1,4 +1,4 @@
-# cesmaccloud 
+# cesmaccloud
 
 How to generate bundle.zip used on AWS Elastic Beanstalk:
 
@@ -8,12 +8,12 @@ jar cMf bundle.zip src conf Procfile Buildfile pom.xml
 ```
 
 
-## Eclipse configuration 
+## Eclipse configuration
 
 In the root path of the project use the follows commands :
 
 ```
-mvn eclipse:clean 
+mvn eclipse:clean
 mvn eclipse:eclipse
 ```
 
@@ -22,14 +22,18 @@ mvn eclipse:eclipse
 
 ## Get all todos
 
-**Request**:
+### Request:
 
-```GET: /todo```
+**URL:**
+
+```
+GET: /todo
+```
 
 **Response**
 
 ```
-[	
+[
 	{
 		title: "title",
 		id: 1
@@ -43,33 +47,16 @@ mvn eclipse:eclipse
 
 ## Get a todo
 
-**Request**:
+### Request:
 
-```GET: /todo/:title```
-
-**Response**
+**URL:**
 
 ```
-[	
-	{
-		title: "title",
-		id: 1
-	}
-]
+GET: /todo/:title
 ```
 
+**Response:**
 
-
-## Create a todo
-
-**Request**:
-
-URL
-```
-POST: /todo
-```
-
-Body: 
 ```
 {
 	title: "title",
@@ -77,13 +64,31 @@ Body:
 }
 ```
 
-**Response**
+
+
+## Create a todo
+
+### Request:
+
+**URL:**
 
 ```
-[	
-	{
-		title: "title",
-		id: 1
-	}
-]
+POST: /todo
+```
+
+**Body:**
+
+```
+{
+	title: "title"
+}
+```
+
+**Response:**
+
+```
+{
+	title: "title",
+	id: 1
+}
 ```
