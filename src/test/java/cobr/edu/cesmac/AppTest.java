@@ -10,9 +10,10 @@ public class AppTest extends BaseTest {
 
   @Test
   public void newTodo() throws Exception {
-	  server.post("/todo").body("{\"name\":\"eriva\"}", "application/json")
-	  .expect("{\"name\":\"eriva\",\"id\":1}");
-	  
+      server
+          .post("/todo")
+          .body("{\"title\":\"eriva\"}", "application/json")
+	  .expect("{\"title\":\"eriva\",\"id\":1}");
   }
 
 }
