@@ -40,7 +40,7 @@ public class Todo {
 	}
 	
 	public String toString() {
-		return name;
+		return title;
 	}
 	
 }

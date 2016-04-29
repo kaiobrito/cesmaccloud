@@ -28,6 +28,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.concurrent.atomic.AtomicInteger;
 
+import org.apache.http.client.fluent.Request;
 import org.jooby.Result;
 import org.jooby.Results;
 import org.jooby.View;
@@ -37,18 +38,34 @@ import org.jooby.mvc.POST;
 import org.jooby.mvc.Path;
 import org.jooby.mvc.Produces;
 
+import javassist.NotFoundException;
+
 
 @Produces("application/json")
 @Path("/todo")
 public class TodoResource {
-	
+	static List<Todo> todos = new ArrayList<Todo>();
 
 	static AtomicInteger idgen = new AtomicInteger();
 
 	@POST
 	public Todo store(@Body Todo todo){
 		todo.id = idgen.incrementAndGet();
+		todos.add(todo);
 		return todo;
+	}
+	
+	@Path("/:title")
+	@GET
+	public Todo get(String title) throws NotFoundException {
+		System.out.println("Total of todos: " + todos.size());
+		for (Todo todo: todos) {
+			if (todo.title.equals(title)) {
+				return todo;
+			}
+		}
+		
+		throw new NotFoundException("Todo does not exist");
 	}
 
 }
