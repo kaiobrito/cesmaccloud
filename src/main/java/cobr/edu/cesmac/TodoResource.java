@@ -25,13 +25,8 @@ package cobr.edu.cesmac;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 import java.util.concurrent.atomic.AtomicInteger;
 
-import org.apache.http.client.fluent.Request;
-import org.jooby.Result;
-import org.jooby.Results;
-import org.jooby.View;
 import org.jooby.mvc.Body;
 import org.jooby.mvc.GET;
 import org.jooby.mvc.POST;
@@ -48,13 +43,18 @@ public class TodoResource {
 
 	static AtomicInteger idgen = new AtomicInteger();
 
+	@GET
+	public List<Todo> listAllTodos()  {
+		return todos;
+	}
+
 	@POST
 	public Todo store(@Body Todo todo){
 		todo.id = idgen.incrementAndGet();
 		todos.add(todo);
 		return todo;
 	}
-	
+
 	@Path("/:title")
 	@GET
 	public Todo get(String title) throws NotFoundException {
