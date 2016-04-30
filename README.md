@@ -17,6 +17,10 @@ mvn eclipse:clean
 mvn eclipse:eclipse
 ```
 
+## How to test endpoints
+
+You can import a collection on Postman [here](https://www.getpostman.com/collections/d4ee5b4f401a78ef557c).
+
 
 # Endpoints
 
@@ -63,7 +67,6 @@ GET: /todo/:title
 	id: 1
 }
 ```
-
 
 
 ## Create a todo
