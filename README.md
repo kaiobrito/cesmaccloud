@@ -95,3 +95,22 @@ POST: /todo
 	id: 1
 }
 ```
+
+## Update a todo
+
+### Request:
+
+**URL:**
+
+```
+PUT: /todo/:id
+```
+
+**Response**
+
+```
+{
+	title: "title2",
+	id: 2
+}
+```
