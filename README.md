@@ -19,7 +19,8 @@ mvn eclipse:eclipse
 
 ## How to test endpoints
 
-You can import a collection on Postman [here](https://www.getpostman.com/collections/d4ee5b4f401a78ef557c).
+You can import a collection on Postman [here](https://www.getpostman.com/collections/1c595565ab9d4e6acf2d).
+
 
 
 # Endpoints
