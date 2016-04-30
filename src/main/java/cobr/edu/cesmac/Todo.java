@@ -23,9 +23,6 @@
  */
 package cobr.edu.cesmac;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class Todo {
