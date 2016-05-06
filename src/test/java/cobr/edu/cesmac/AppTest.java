@@ -24,6 +24,23 @@ public class AppTest extends BaseTest {
 	  server.get("/todo/lorem")
 	  	.expect("{\"title\":\"lorem\",\"id\":1}");
   }
+  
+  @Test
+  public void updateTodo() throws Exception {
+	  Todo todo = new Todo("lorem");
+	  todo.id = 1;
+	  
+	  Todo todo2 = new Todo("lorem2");
+	  todo.id = 2;
+	  
+	  TodoResource.todos.add(todo);
+	  TodoResource.todos.add(todo2);
+	  
+	  server
+	      .put("/todo/2")
+	      .body("{\"title\":\"diego\"}", "application/json")
+	      .expect("{\"title\":\"diego\",\"id\":2}");
+  }
 
   @Test
   public void viewAllTodos() throws Exception {

@@ -30,6 +30,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 import org.jooby.mvc.Body;
 import org.jooby.mvc.GET;
 import org.jooby.mvc.POST;
+import org.jooby.mvc.PUT;
 import org.jooby.mvc.Path;
 import org.jooby.mvc.Produces;
 
@@ -53,6 +54,19 @@ public class TodoResource {
 		todo.id = idgen.incrementAndGet();
 		todos.add(todo);
 		return todo;
+	}
+	
+	@Path("/:id")
+	@PUT
+	public Todo update(@Body Todo todo, Integer id) throws NotFoundException{
+		for (Todo item: todos) {
+			if (item.id == id) {
+				item.title = todo.title;	
+				return item;
+			}
+		}
+		
+		throw new NotFoundException("Todo does not exist");
 	}
 
 	@Path("/:title")
