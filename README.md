@@ -1,5 +1,7 @@
 # cesmaccloud
 
+[![Build Status](https://travis-ci.org/kaiobrito/cesmaccloud.svg?branch=master)](https://travis-ci.org/kaiobrito/cesmaccloud)
+
 How to generate bundle.zip used on AWS Elastic Beanstalk:
 
 ```
