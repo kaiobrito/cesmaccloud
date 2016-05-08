@@ -34,51 +34,53 @@ import org.jooby.mvc.PUT;
 import org.jooby.mvc.Path;
 import org.jooby.mvc.Produces;
 
-import javassist.NotFoundException;
+import com.google.inject.Inject;
 
+import javassist.NotFoundException;
 
 @Produces("application/json")
 @Path("/todo")
 public class TodoResource {
-	static List<Todo> todos = new ArrayList<Todo>();
 
-	static AtomicInteger idgen = new AtomicInteger();
+	private TodoStore store;
+
+	@Inject
+	public TodoResource(TodoStore store) {
+		this.store = store;
+	}
 
 	@GET
-	public List<Todo> listAllTodos()  {
-		return todos;
+	public List<Todo> listAllTodos() {
+		return store.all();
 	}
 
 	@POST
-	public Todo store(@Body Todo todo){
-		todo.id = idgen.incrementAndGet();
-		todos.add(todo);
+	public Todo store(@Body Todo todo) {
+		store.add(todo);
 		return todo;
 	}
-	
+
 	@Path("/:id")
 	@PUT
-	public Todo update(@Body Todo todo, Integer id) throws NotFoundException{
-		for (Todo item: todos) {
-			if (item.id == id) {
-				item.title = todo.title;	
-				return item;
-			}
+	public Todo update(@Body Todo todo, Integer id) throws NotFoundException {
+		Todo item = store.update(id, todo.title);
+
+		if (item != null) {
+			return item;
 		}
-		
+
 		throw new NotFoundException("Todo does not exist");
 	}
 
-	@Path("/:title")
+	@Path("/:id")
 	@GET
-	public Todo get(String title) throws NotFoundException {
-		System.out.println("Total of todos: " + todos.size());
-		for (Todo todo: todos) {
-			if (todo.title.equals(title)) {
-				return todo;
-			}
+	public Todo get(Integer id) throws NotFoundException {
+		Todo todo = store.findById(id);
+
+		if (todo != null) {
+			return todo;
 		}
-		
+
 		throw new NotFoundException("Todo does not exist");
 	}
 

@@ -57,7 +57,7 @@ GET: /todo
 **URL:**
 
 ```
-GET: /todo/:title
+GET: /todo/:id
 ```
 
 **Response:**

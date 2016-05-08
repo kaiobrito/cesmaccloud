@@ -31,14 +31,14 @@ import org.jooby.json.Jackson;
  */
 public class App extends Jooby {
 
-  {
-	  use(new Jackson());
-    use(TodoResource.class);
-    get("/", () -> "Hello World! Guy");
-  }
+	{
+		use(new Jackson());
+		use(TodoResource.class);
+		get("/", () -> "Hello World! Guy");
+	}
 
-  public static void main(final String[] args) throws Exception {
-    run(App::new, args);
-  }
+	public static void main(final String[] args) throws Exception {
+		run(App::new, args);
+	}
 
 }
