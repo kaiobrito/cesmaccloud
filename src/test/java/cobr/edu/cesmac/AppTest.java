@@ -21,7 +21,7 @@ public class AppTest extends BaseTest {
 	  todo.id = 1;
 	  TodoResource.todos.add(todo);
 	  
-	  server.get("/todo/lorem")
+	  server.get("/todo/1")
 	  	.expect("{\"title\":\"lorem\",\"id\":1}");
   }
   

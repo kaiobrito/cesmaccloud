@@ -69,12 +69,12 @@ public class TodoResource {
 		throw new NotFoundException("Todo does not exist");
 	}
 
-	@Path("/:title")
+	@Path("/:id")
 	@GET
-	public Todo get(String title) throws NotFoundException {
+	public Todo get(Integer id) throws NotFoundException {
 		System.out.println("Total of todos: " + todos.size());
 		for (Todo todo: todos) {
-			if (todo.title.equals(title)) {
+			if (todo.id == id) {
 				return todo;
 			}
 		}
